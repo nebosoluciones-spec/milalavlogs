@@ -329,8 +329,8 @@ footer{border-top:1px solid var(--border);padding:22px 48px;display:flex;justify
     <div class="journey">
       <div class="j-label">Mi camino como creadora</div>
       <div class="j-steps">
-        <div class="j-step"><div class="j-dot done"></div><span class="j-text done">44 videos publicados en YouTube</span></div>
-        <div class="j-step"><div class="j-dot done"></div><span class="j-text done">1,476,803 reproducciones totales</span></div>
+        <div class="j-step"><div class="j-dot done"></div><span class="j-text done" id="j-videos">44 videos publicados en YouTube</span></div>
+        <div class="j-step"><div class="j-dot done"></div><span class="j-text done" id="j-views">1,476,803 reproducciones totales</span></div>
         <div class="j-step"><div class="j-dot done"></div><span class="j-text done">Comunidad en TikTok: +8,300 seguidores</span></div>
         <div class="j-step"><div class="j-dot now"></div><span class="j-text now">Creciendo en todas las plataformas</span><span class="j-badge">Ahora</span></div>
         <div class="j-step"><div class="j-dot next"></div><span class="j-text">Lanzar primeros productos digitales</span></div>
@@ -350,7 +350,7 @@ footer{border-top:1px solid var(--border);padding:22px 48px;display:flex;justify
       <div class="plat-grid">
         <a href="https://www.youtube.com/channel/UCPAY8GozBcxF0un2I6REdaQ" target="_blank" class="plat-card">
           <div class="pc-top"><div class="pc-bar pc-yt"></div><span class="pc-name">YouTube</span></div>
-          <div class="pc-count" id="yt-subs">823</div><div class="pc-note" id="yt-views">↑ 1.47M vistas totales</div>
+          <div class="pc-count" id="yt-subs">823</div><div class="pc-note" id="yt-views-mini">↑ 1.47M vistas totales</div>
         </a>
         <a href="https://www.tiktok.com/@milalavlogs" target="_blank" class="plat-card">
           <div class="pc-top"><div class="pc-bar pc-tt"></div><span class="pc-name">TikTok</span></div>
@@ -368,7 +368,7 @@ footer{border-top:1px solid var(--border);padding:22px 48px;display:flex;justify
     </div>
     <div class="metrics">
       <div class="mi"><div class="mi-n">44</div><div class="mi-l">Videos</div></div>
-      <div class="mi"><div class="mi-n">1.47M</div><div class="mi-l">Vistas YT</div></div>
+      <div class="mi"><div class="mi-n" id="mi-views">1.47M</div><div class="mi-l">Vistas YT</div></div>
       <div class="mi"><div class="mi-n">9,700+</div><div class="mi-l">Comunidad</div></div>
     </div>
   </div>
@@ -423,16 +423,16 @@ footer{border-top:1px solid var(--border);padding:22px 48px;display:flex;justify
   <div class="yt-highlight">
     <div>
       <div class="yth-label">La historia real detrás de los números</div>
-      <div class="yth-title">Con 44 videos, el contenido de Mila ha superado el millón y medio de reproducciones — sin estrategia masiva, solo autenticidad.</div>
-      <div class="yth-body">Más de 33,000 vistas por video en promedio. Una voz genuina que conecta de verdad.</div>
+      <div class="yth-title" id="yth-title">Con 44 videos, el contenido de Mila ha superado el millón y medio de reproducciones — sin estrategia masiva, solo autenticidad.</div>
+      <div class="yth-body" id="yth-body">Más de 33,000 vistas por video en promedio. Una voz genuina que conecta de verdad.</div>
     </div>
     <div class="yth-right">
-      <div class="yth-big">1.47M</div>
+      <div class="yth-big" id="yth-big">1.47M</div>
       <div class="yth-unit">Reproducciones totales</div>
-      <div class="yth-sub">con 44 videos · YouTube</div>
+      <div class="yth-sub" id="yth-sub">con 44 videos · YouTube</div>
     </div>
   </div>
-  <div class="vgrid"><a href="https://www.youtube.com/watch?v=q1D6y_ob7w4" target="_blank" class="vcard">
+  <div class="vgrid" id="yt-vgrid"><a href="https://www.youtube.com/watch?v=q1D6y_ob7w4" target="_blank" class="vcard">
       <div class="vthumb">
         <img src="https://img.youtube.com/vi/q1D6y_ob7w4/hqdefault.jpg" alt="🇺🇦 Caminando por Dnipro: comida casera, KFC ucraniano y cómo se vive la guerra hoy" onerror="this.parentElement.querySelector('.vthumb-fallback').style.display='flex'">
         <div class="vthumb-fallback">🎬</div>
@@ -470,7 +470,7 @@ footer{border-top:1px solid var(--border);padding:22px 48px;display:flex;justify
       </div>
     </a></div>
   <div class="yt-cta">
-    <span class="yt-cta-text">¿Quieres ver más? Hay 44 videos esperándote.</span>
+    <span class="yt-cta-text" id="yt-cta-text">¿Quieres ver más? Hay 44 videos esperándote.</span>
     <a href="https://www.youtube.com/channel/UCPAY8GozBcxF0un2I6REdaQ" target="_blank" class="yt-cta-btn">Ir al canal →</a>
   </div>
 </div>
@@ -671,32 +671,6 @@ footer{border-top:1px solid var(--border);padding:22px 48px;display:flex;justify
 </div>
 
 <script>
-// ── YOUTUBE LIVE SUBSCRIBERS ──
-// Reemplaza TU_API_KEY con tu clave de YouTube Data API v3
-// Obtén una gratis en: https://console.cloud.google.com
-(function(){
-  var YT_CHANNEL_ID = 'UCPAY8GozBcxF0un2I6REdaQ';
-  var YT_API_KEY = 'AIzaSyAaGNaFiC_ehz7AR-W9fC6jCvw-S8yyXVo'; // ← pon tu clave aquí
-
-  if(YT_API_KEY === 'TU_API_KEY') return; // no correr sin clave
-
-  fetch('https://www.googleapis.com/youtube/v3/channels?part=statistics&id='+YT_CHANNEL_ID+'&key='+YT_API_KEY)
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if(!d.items || !d.items[0]) return;
-      var s = d.items[0].statistics;
-      var subs = Number(s.subscriberCount).toLocaleString('es-MX');
-      var views = Number(s.viewCount).toLocaleString('es-MX');
-      var subEl = document.getElementById('yt-subs');
-      var viewEl = document.getElementById('yt-views');
-      if(subEl) subEl.textContent = subs;
-      if(viewEl) viewEl.textContent = '↑ '+views+' vistas totales';
-    })
-    .catch(function(e){ console.warn('YouTube API error:', e); });
-})();
-</script>
-
-<script>
 (function(){
   var COOKIE_KEY = 'milala_cookies_consent';
   function getCookie(name){return document.cookie.split(';').some(function(c){return c.trim().startsWith(name+'=')})}
@@ -732,6 +706,106 @@ footer{border-top:1px solid var(--border);padding:22px 48px;display:flex;justify
   };
   // Close with Escape key
   document.addEventListener('keydown',function(e){if(e.key==='Escape')window.closePrivacy()});
+})();
+</script>
+
+<script>
+// ── YOUTUBE DATA API v3 ──
+// 1. Ve a console.cloud.google.com
+// 2. Crea proyecto → activa "YouTube Data API v3"
+// 3. Credenciales → Crear clave API → pégala aquí:
+(function(){
+  var YT_CHANNEL_ID = 'UCPAY8GozBcxF0un2I6REdaQ';
+  var YT_API_KEY = 'TU_API_KEY'; // ← reemplaza esto
+
+  if(YT_API_KEY === 'TU_API_KEY') return;
+
+  var BASE = 'https://www.googleapis.com/youtube/v3/';
+
+  // ── 1. Estadísticas del canal ──
+  fetch(BASE+'channels?part=statistics&id='+YT_CHANNEL_ID+'&key='+YT_API_KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d.items||!d.items[0]) return;
+      var s = d.items[0].statistics;
+      var subs      = Number(s.subscriberCount);
+      var views     = Number(s.viewCount);
+      var vidCount  = Number(s.videoCount);
+      var avgViews  = Math.round(views / vidCount).toLocaleString('es-MX');
+
+      function fmt(n){
+        if(n>=1e6) return (n/1e6).toFixed(2).replace('.',',')+' M';
+        if(n>=1e3) return (n/1e3).toFixed(1).replace('.',',')+' K';
+        return n.toLocaleString('es-MX');
+      }
+      function fmtFull(n){ return n.toLocaleString('es-MX'); }
+
+      // Mini card hero
+      var el = document.getElementById('yt-subs');
+      if(el) el.textContent = subs.toLocaleString('es-MX');
+      var el2 = document.getElementById('yt-views-mini');
+      if(el2) el2.textContent = '↑ '+fmt(views)+' vistas totales';
+
+      // Journey
+      var jv = document.getElementById('j-videos');
+      if(jv) jv.textContent = vidCount+' videos publicados en YouTube';
+      var jview = document.getElementById('j-views');
+      if(jview) jview.textContent = fmtFull(views)+' reproducciones totales';
+
+      // Métrica
+      var mi = document.getElementById('mi-views');
+      if(mi) mi.textContent = fmt(views);
+
+      // Highlight grande
+      var big = document.getElementById('yth-big');
+      if(big) big.textContent = fmt(views);
+      var sub = document.getElementById('yth-sub');
+      if(sub) sub.textContent = 'con '+vidCount+' videos · YouTube';
+      var title = document.getElementById('yth-title');
+      if(title) title.textContent = 'Con '+vidCount+' videos, el contenido de Mila ha superado '+fmt(views)+' reproducciones — sin estrategia masiva, solo autenticidad.';
+      var body = document.getElementById('yth-body');
+      if(body) body.textContent = 'Más de '+avgViews+' vistas por video en promedio. Una voz genuina que conecta de verdad.';
+
+      // CTA
+      var cta = document.getElementById('yt-cta-text');
+      if(cta) cta.textContent = '¿Quieres ver más? Hay '+vidCount+' videos esperándote.';
+    })
+    .catch(function(e){ console.warn('YouTube canal error:', e); });
+
+  // ── 2. Últimos 3 videos ──
+  fetch(BASE+'search?part=snippet&channelId='+YT_CHANNEL_ID+'&order=date&maxResults=3&type=video&key='+YT_API_KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d.items||!d.items.length) return;
+      var grid = document.getElementById('yt-vgrid');
+      if(!grid) return;
+      grid.innerHTML = '';
+      d.items.forEach(function(item){
+        var vid = item.id.videoId;
+        var title = item.snippet.title;
+        var thumb = item.snippet.thumbnails.high
+                  ? item.snippet.thumbnails.high.url
+                  : 'https://img.youtube.com/vi/'+vid+'/hqdefault.jpg';
+        var a = document.createElement('a');
+        a.href = 'https://www.youtube.com/watch?v='+vid;
+        a.target = '_blank';
+        a.className = 'vcard';
+        a.innerHTML =
+          '<div class="vthumb">'+
+            '<img src="'+thumb+'" alt="'+title.replace(/"/g,'&quot;')+'" onerror="this.parentElement.querySelector(\'.vthumb-fallback\').style.display=\'flex\'">'+
+            '<div class="vthumb-fallback">🎬</div>'+
+            '<span class="vplat p-yt">YT</span>'+
+            '<div class="vplay"><div class="vplay-tri"></div></div>'+
+          '</div>'+
+          '<div class="vmeta">'+
+            '<div class="vtag">YouTube</div>'+
+            '<div class="vtitle">'+title+'</div>'+
+            '<div class="vstats">Ver en YouTube →</div>'+
+          '</div>';
+        grid.appendChild(a);
+      });
+    })
+    .catch(function(e){ console.warn('YouTube videos error:', e); });
 })();
 </script>
 
